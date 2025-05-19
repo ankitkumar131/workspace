@@ -1,7 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
+import { filter } from 'rxjs/operators';
 
 interface NavItem {
   label: string;
@@ -23,17 +24,33 @@ export class HeaderComponent implements OnInit {
   
   navItems: NavItem[] = [
     { label: 'Home', route: '/', exact: true },
-    { label: 'About', route: '/about', exact: false },
+    { label: 'About', route: '/#about', exact: false },
     { label: 'Experience', route: '/experience', exact: false },
     { label: 'Projects', route: '/projects', exact: false },
     { label: 'Skills', route: '/skills', exact: false },
     { label: 'Contact', route: '/contact', exact: false }
   ];
   
-  constructor(private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService, private router: Router) {}
   
   ngOnInit(): void {
     this.isDarkTheme = this.themeService.isDarkTheme();
+    
+    // Handle fragment navigation
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      const urlTree = this.router.parseUrl(this.router.url);
+      if (urlTree.fragment) {
+        setTimeout(() => {
+          const fragmentId = urlTree.fragment as string;
+          const element = document.getElementById(fragmentId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    });
   }
   
   @HostListener('window:scroll')

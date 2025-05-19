@@ -68,6 +68,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "port": 12000,
+            "host": "0.0.0.0",
             "disableHostCheck": true,
             "allowedHosts": [
               "work-1-mwpvevvpbyeejbaq.prod-runtime.all-hands.dev",

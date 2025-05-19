@@ -65,6 +65,8 @@ export class AnimatedCardComponent implements AfterViewInit, OnDestroy {
   }
   
   private onMouseMove(e: MouseEvent) {
+    if (!this.cardElement || !this.cardElement.nativeElement) return;
+    
     const card = this.cardElement.nativeElement;
     this.cardRect = card.getBoundingClientRect();
     
@@ -102,6 +104,8 @@ export class AnimatedCardComponent implements AfterViewInit, OnDestroy {
   }
   
   private onMouseLeave() {
+    if (!this.cardElement || !this.cardElement.nativeElement) return;
+    
     const card = this.cardElement.nativeElement;
     
     gsap.to(card, {
@@ -123,6 +127,8 @@ export class AnimatedCardComponent implements AfterViewInit, OnDestroy {
   }
   
   private onMouseEnter() {
+    if (!this.cardElement || !this.cardElement.nativeElement) return;
+    
     if (this.shineEffect) {
       const shine = this.cardElement.nativeElement.querySelector('.card-shine');
       if (shine) {

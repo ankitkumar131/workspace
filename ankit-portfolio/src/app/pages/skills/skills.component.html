@@ -16,7 +16,7 @@
           [style.animation-delay]="i * 100 + 'ms'"
         >
           <div class="category-icon" [style.background]="category.color">
-            <span class="material-icons">{{ category.icon }}</span>
+            <img [src]="'/assets/icons/' + category.icon + '.svg'" [alt]="category.name + ' icon'" />
           </div>
           <span class="category-name">{{ category.name }}</span>
         </div>
@@ -35,7 +35,7 @@
             [iconBackground]="skill.color"
           >
             <div icon>
-              <span class="material-icons">{{ skill.icon }}</span>
+              <img [src]="'/assets/icons/' + skill.icon + '.svg'" [alt]="skill.name + ' icon'" class="skill-icon-img" />
             </div>
           </app-skill-card>
         </div>
