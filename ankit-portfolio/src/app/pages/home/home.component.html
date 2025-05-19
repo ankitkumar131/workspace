@@ -1,0 +1,127 @@
+<section class="hero-section">
+  <app-particle-background
+    particleColor="#3b82f6"
+    [particleNumber]="80"
+    [particleOpacity]="0.5"
+    [particleSpeed]="3"
+    [hoverEffect]="true"
+    [clickEffect]="true"
+  ></app-particle-background>
+  
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text" @fadeInUp>
+        <h1 class="hero-title">
+          <span class="greeting">Hello, I'm</span>
+          <span class="name">Ankit Kumar</span>
+          <span class="role">MEAN-Stack Developer & Cloud Enthusiast</span>
+        </h1>
+        
+        <p class="hero-description">
+          Building scalable web applications with MongoDB, Express.js, Angular, and Node.js.
+          Passionate about cloud technologies and AI-driven solutions.
+        </p>
+        
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Get in Touch</a>
+          <a href="#projects" class="btn btn-outline">View Projects</a>
+        </div>
+      </div>
+      
+      <div class="hero-image" @fadeIn>
+        <div class="image-container">
+          <!-- Replace with your image -->
+          <div class="placeholder-image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3"/>
+              <circle cx="12" cy="10" r="3"/>
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="scroll-indicator" @fadeIn>
+      <span>Scroll Down</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <polyline points="19 12 12 19 5 12"></polyline>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about-section section">
+  <div class="container">
+    <div class="section-header" @fadeInUp>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-line"></div>
+    </div>
+    
+    <div class="about-content">
+      <div class="about-text" @fadeInUp>
+        <p class="about-description">
+          Recent graduate (Class of 2025) with a Bachelor of Computer Applications (BCA), specializing in 
+          Cloud Technology, I bring a strong academic foundation (CGPA: 9.03) and hands-on expertise in 
+          cloud computing, full-stack development, and AI-driven solutions.
+        </p>
+        <p class="about-description">
+          With 8 months of professional experience in the MEAN stack (MongoDB, Express.js, Angular, Node.js),
+          I have developed proficiency in building scalable web applications while mastering technologies like Docker, 
+          Kubernetes, Google Cloud Platform (GCP), and AWS.
+        </p>
+        <p class="about-description">
+          My skill set spans programming languages such as Python, JavaScript, and Java, alongside contributions 
+          to AI/ML projects and data engineering workflows.
+        </p>
+        
+        <div class="about-details">
+          <div class="detail-item">
+            <span class="detail-label">Name:</span>
+            <span class="detail-value">Ankit Kumar</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Location:</span>
+            <span class="detail-value">Pune, India</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Email:</span>
+            <span class="detail-value">zxankit24&#64;gmail.com</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Phone:</span>
+            <span class="detail-value">+91 7385356862</span>
+          </div>
+        </div>
+        
+        <div class="about-cta">
+          <a href="#" class="btn btn-primary">Download CV</a>
+        </div>
+      </div>
+      
+      <div class="about-stats" @fadeIn>
+        <app-animated-card class="stats-card">
+          <div class="stats-content">
+            <div class="stat-item">
+              <div class="stat-value">8+</div>
+              <div class="stat-label">Months Experience</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">10+</div>
+              <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">3+</div>
+              <div class="stat-label">Hackathons</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">9.03</div>
+              <div class="stat-label">CGPA</div>
+            </div>
+          </div>
+        </app-animated-card>
+      </div>
+    </div>
+  </div>
+</section>

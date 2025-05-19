@@ -1,0 +1,34 @@
+<app-animated-card [glass]="true" [hoverEffect]="true">
+  <div class="project-card">
+    <div class="project-image" *ngIf="imageUrl">
+      <img [src]="imageUrl" [alt]="title" />
+    </div>
+    
+    <div class="project-content">
+      <h3 class="project-title">{{ title }}</h3>
+      <p class="project-description">{{ description }}</p>
+      
+      <div class="project-tech">
+        <span class="tech-tag" *ngFor="let tech of technologies">{{ tech }}</span>
+      </div>
+      
+      <div class="project-links">
+        <a *ngIf="demoUrl" [href]="demoUrl" target="_blank" class="project-link demo-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+          </svg>
+          Live Demo
+        </a>
+        
+        <a *ngIf="codeUrl" [href]="codeUrl" target="_blank" class="project-link code-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          View Code
+        </a>
+      </div>
+    </div>
+  </div>
+</app-animated-card>

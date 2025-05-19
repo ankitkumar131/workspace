@@ -1,0 +1,13 @@
+<div 
+  class="animated-card" 
+  [class.glass]="glass" 
+  [class.hover-effect]="hoverEffect"
+  [ngStyle]="{'--card-bg': backgroundColor}"
+  #card
+>
+  <div class="card-content">
+    <ng-content></ng-content>
+  </div>
+  
+  <div class="card-shine" *ngIf="shineEffect"></div>
+</div>

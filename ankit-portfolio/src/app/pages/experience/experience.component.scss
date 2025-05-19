@@ -1,0 +1,130 @@
+.experience-section {
+  padding: var(--space-20) 0;
+  background-color: var(--bg-secondary);
+}
+
+.experience-content {
+  margin-top: var(--space-12);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.timeline-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.timeline-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+  
+  svg {
+    color: var(--accent-blue);
+  }
+}
+
+.timeline-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.timeline-item {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.timeline-item-content {
+  padding: var(--space-2);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2);
+  
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+}
+
+.timeline-item-title {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.timeline-item-period {
+  font-size: var(--fs-sm);
+  color: var(--accent-blue);
+  font-weight: 500;
+  padding: var(--space-1) var(--space-3);
+  background-color: rgba(59, 130, 246, 0.1);
+  border-radius: var(--radius-full);
+}
+
+.timeline-item-subtitle {
+  font-size: var(--fs-md);
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.timeline-item-details {
+  color: var(--text-secondary);
+  
+  p {
+    margin-bottom: var(--space-2);
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    
+    li {
+      position: relative;
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-2);
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent-blue);
+      }
+    }
+  }
+}

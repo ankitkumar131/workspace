@@ -1,0 +1,45 @@
+<section id="skills" class="skills-section section">
+  <div class="container">
+    <div class="section-header" @fadeInUp>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    
+    <div class="skills-content">
+      <div class="skills-categories" @fadeInUp>
+        <div 
+          *ngFor="let category of skillCategories; let i = index" 
+          class="skill-category"
+          [class.active]="activeCategory === category.id"
+          (click)="setActiveCategory(category.id)"
+          @fadeInUp
+          [style.animation-delay]="i * 100 + 'ms'"
+        >
+          <div class="category-icon" [style.background]="category.color">
+            <span class="material-icons">{{ category.icon }}</span>
+          </div>
+          <span class="category-name">{{ category.name }}</span>
+        </div>
+      </div>
+      
+      <div class="skills-grid" @staggerFade>
+        <div 
+          *ngFor="let skill of filteredSkills; let i = index" 
+          class="skill-item"
+          @fadeInUp
+          [style.animation-delay]="i * 50 + 'ms'"
+        >
+          <app-skill-card
+            [name]="skill.name"
+            [level]="skill.level"
+            [iconBackground]="skill.color"
+          >
+            <div icon>
+              <span class="material-icons">{{ skill.icon }}</span>
+            </div>
+          </app-skill-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

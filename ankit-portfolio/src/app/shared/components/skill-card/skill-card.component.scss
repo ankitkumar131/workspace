@@ -1,0 +1,61 @@
+.skill-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.skill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-primary);
+  color: var(--text-primary);
+  flex-shrink: 0;
+  
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.skill-content {
+  flex: 1;
+}
+
+.skill-name {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.skill-level {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.skill-progress {
+  flex: 1;
+  height: 6px;
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.skill-progress-bar {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: width 1s ease;
+}
+
+.skill-percentage {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--text-secondary);
+  min-width: 36px;
+  text-align: right;
+}

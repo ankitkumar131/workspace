@@ -1,0 +1,16 @@
+<app-animated-card [glass]="true" [hoverEffect]="true" [tiltEffect]="false">
+  <div class="skill-card">
+    <div class="skill-icon" [style.background]="iconBackground">
+      <ng-content select="[icon]"></ng-content>
+    </div>
+    <div class="skill-content">
+      <h3 class="skill-name">{{ name }}</h3>
+      <div class="skill-level">
+        <div class="skill-progress">
+          <div class="skill-progress-bar" [style.width.%]="level"></div>
+        </div>
+        <span class="skill-percentage">{{ level }}%</span>
+      </div>
+    </div>
+  </div>
+</app-animated-card>

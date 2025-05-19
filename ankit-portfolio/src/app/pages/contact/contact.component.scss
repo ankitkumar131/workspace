@@ -1,0 +1,141 @@
+.contact-section {
+  padding: var(--space-20) 0;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  margin-top: var(--space-12);
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-subtitle {
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.contact-text {
+  font-size: var(--fs-md);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-8);
+  line-height: 1.6;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-primary);
+  color: white;
+  flex-shrink: 0;
+}
+
+.contact-info-text {
+  h4 {
+    font-size: var(--fs-md);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-1);
+  }
+  
+  p {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+  }
+}
+
+.social-links {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    background: var(--gradient-primary);
+    color: white;
+    transform: translateY(-3px);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-6);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+label {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+input, textarea {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: var(--fs-md);
+  transition: all var(--transition-fast);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+  
+  &.invalid {
+    border-color: var(--accent-red);
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.error-message {
+  font-size: var(--fs-xs);
+  color: var(--accent-red);
+  margin-top: var(--space-1);
+}

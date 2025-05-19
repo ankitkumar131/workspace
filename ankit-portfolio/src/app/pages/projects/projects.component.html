@@ -1,0 +1,37 @@
+<section id="projects" class="projects-section section">
+  <div class="container">
+    <div class="section-header" @fadeInUp>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    
+    <div class="projects-filter" @fadeInUp>
+      <button 
+        *ngFor="let filter of filters" 
+        class="filter-btn" 
+        [class.active]="activeFilter === filter"
+        (click)="setFilter(filter)"
+      >
+        {{ filter }}
+      </button>
+    </div>
+    
+    <div class="projects-grid" @staggerFade>
+      <div 
+        *ngFor="let project of filteredProjects; let i = index" 
+        class="project-item"
+        @fadeInUp
+        [style.animation-delay]="i * 100 + 'ms'"
+      >
+        <app-project-card
+          [title]="project.title"
+          [description]="project.description"
+          [imageUrl]="project.imageUrl"
+          [technologies]="project.technologies"
+          [demoUrl]="project.demoUrl"
+          [codeUrl]="project.codeUrl"
+        ></app-project-card>
+      </div>
+    </div>
+  </div>
+</section>
