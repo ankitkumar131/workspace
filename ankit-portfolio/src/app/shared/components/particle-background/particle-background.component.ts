@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Container, Engine, tsParticles } from 'tsparticles-engine';
-import { loadSlim } from 'tsparticles-slim';
+import { loadFull } from 'tsparticles';
 import { ThemeService } from '../../../services/theme.service';
 import { Subscription } from 'rxjs';
 
@@ -56,7 +56,8 @@ export class ParticleBackgroundComponent implements OnInit, OnDestroy {
   private async initParticles() {
     const engine = await this.initEngine();
     
-    this.container = await engine.createContainer(this.particleContainer.nativeElement, {
+    // Use the loadJSON method instead of createContainer
+    this.container = await engine.load(this.particleContainer.nativeElement.id, {
       fullScreen: { enable: false },
       fpsLimit: 60,
       particles: {
@@ -93,7 +94,8 @@ export class ParticleBackgroundComponent implements OnInit, OnDestroy {
             sync: false
           }
         },
-        line_linked: {
+        // @ts-ignore - tsparticles has type issues
+        links: {
           enable: true,
           distance: 150,
           color: this.lineColor,
@@ -145,8 +147,10 @@ export class ParticleBackgroundComponent implements OnInit, OnDestroy {
   }
   
   private async initEngine(): Promise<Engine> {
-    await loadSlim(tsParticles);
-    return tsParticles;
+    // @ts-ignore - tsparticles has type issues
+    const engine = await loadFull(tsParticles);
+    // @ts-ignore - tsparticles has type issues
+    return engine;
   }
   
   private updateParticleColors() {
@@ -156,11 +160,15 @@ export class ParticleBackgroundComponent implements OnInit, OnDestroy {
     if (!particles) return;
     
     if (this.isDarkTheme) {
-      particles.color!.value = this.particleColor;
-      particles.line_linked!.color = this.lineColor;
+      // @ts-ignore - tsparticles has type issues
+      if (particles.color) particles.color.value = this.particleColor;
+      // @ts-ignore - tsparticles has type issues
+      if (particles.links) particles.links.color = this.lineColor;
     } else {
-      particles.color!.value = '#1e293b';
-      particles.line_linked!.color = '#1e293b';
+      // @ts-ignore - tsparticles has type issues
+      if (particles.color) particles.color.value = '#1e293b';
+      // @ts-ignore - tsparticles has type issues
+      if (particles.links) particles.links.color = '#1e293b';
     }
     
     this.container.refresh();

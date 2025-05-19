@@ -68,33 +68,35 @@ export class AnimatedCardComponent implements AfterViewInit, OnDestroy {
     const card = this.cardElement.nativeElement;
     this.cardRect = card.getBoundingClientRect();
     
-    this.mouseX = e.clientX - this.cardRect.left;
-    this.mouseY = e.clientY - this.cardRect.top;
+    if (this.cardRect) {
+      this.mouseX = e.clientX - this.cardRect.left;
+      this.mouseY = e.clientY - this.cardRect.top;
+      
+      const centerX = this.cardRect.width / 2;
+      const centerY = this.cardRect.height / 2;
     
-    const centerX = this.cardRect.width / 2;
-    const centerY = this.cardRect.height / 2;
+      const rotateX = (this.mouseY - centerY) / 10;
+      const rotateY = (centerX - this.mouseX) / 10;
     
-    const rotateX = (this.mouseY - centerY) / 10;
-    const rotateY = (centerX - this.mouseX) / 10;
-    
-    gsap.to(card, {
-      rotationX: rotateX,
-      rotationY: rotateY,
-      duration: 0.3,
-      ease: 'power2.out'
-    });
-    
-    if (this.shineEffect) {
-      const shine = card.querySelector('.card-shine');
-      if (shine) {
-        const percentX = this.mouseX / this.cardRect.width;
-        const percentY = this.mouseY / this.cardRect.height;
+      gsap.to(card, {
+        rotationX: rotateX,
+        rotationY: rotateY,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+      
+      if (this.shineEffect) {
+        const shine = card.querySelector('.card-shine');
+        if (shine && this.cardRect) {
+          const percentX = this.mouseX / this.cardRect.width;
+          const percentY = this.mouseY / this.cardRect.height;
         
-        gsap.to(shine, {
-          backgroundPosition: `${percentX * 100}% ${percentY * 100}%`,
-          opacity: 0.15,
-          duration: 0.3
-        });
+          gsap.to(shine, {
+            backgroundPosition: `${percentX * 100}% ${percentY * 100}%`,
+            opacity: 0.15,
+            duration: 0.3
+          });
+        }
       }
     }
   }

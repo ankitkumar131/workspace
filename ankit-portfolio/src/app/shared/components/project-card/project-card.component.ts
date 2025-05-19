@@ -14,6 +14,6 @@ export class ProjectCardComponent {
   @Input() description: string = '';
   @Input() imageUrl: string = '';
   @Input() technologies: string[] = [];
-  @Input() demoUrl: string = '';
-  @Input() codeUrl: string = '';
+  @Input() demoUrl: string | undefined = '';
+  @Input() codeUrl: string | undefined = '';
 }
