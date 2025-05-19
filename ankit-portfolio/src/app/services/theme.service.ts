@@ -1,5 +1,6 @@
-import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { Injectable, Renderer2, RendererFactory2, PLATFORM_ID, Inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 type Theme = 'light' | 'dark';
 
@@ -9,22 +10,38 @@ type Theme = 'light' | 'dark';
 export class ThemeService {
   private renderer: Renderer2;
   private theme = new BehaviorSubject<Theme>('dark');
+  private isBrowser: boolean;
   
-  constructor(rendererFactory: RendererFactory2) {
+  constructor(
+    rendererFactory: RendererFactory2,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     this.renderer = rendererFactory.createRenderer(null, null);
+    this.isBrowser = isPlatformBrowser(this.platformId);
     this.initTheme();
   }
   
   private initTheme(): void {
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Default to dark theme for SSR
+    let theme: Theme = 'dark';
     
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    if (this.isBrowser) {
+      const savedTheme = localStorage.getItem('theme') as Theme;
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    }
+    
     this.setTheme(theme);
   }
   
   setTheme(theme: Theme): void {
     this.theme.next(theme);
+    
+    if (!this.isBrowser) {
+      return;
+    }
+    
     localStorage.setItem('theme', theme);
     
     if (theme === 'dark') {
